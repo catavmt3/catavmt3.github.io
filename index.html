@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio · Ciencia de Datos & IA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f7f5f0;
+      --ink: #1a1814;
+      --ink-soft: #6b6860;
+      --accent: #c0392b;
+      --accent-light: #fdf0ee;
+      --border: #e2ded8;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      background: rgba(247,245,240,0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2.5rem;
+    }
+    .nav-logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.1rem;
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--ink-soft);
+      font-size: 0.9rem;
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+
+    /* HERO */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 8rem 2.5rem 4rem;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .hero-inner { max-width: 640px; }
+    .hero-label {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .hero-label::before {
+      content: '';
+      display: block;
+      width: 2rem;
+      height: 1px;
+      background: var(--accent);
+    }
+    h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.6rem, 6vw, 4.2rem);
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      font-weight: 400;
+    }
+    h1 em { font-style: italic; color: var(--accent); }
+    .hero-desc {
+      font-size: 1.05rem;
+      color: var(--ink-soft);
+      max-width: 480px;
+      line-height: 1.75;
+    }
+    .hero-cta {
+      display: inline-block;
+      margin-top: 2.5rem;
+      padding: 0.75rem 2rem;
+      background: var(--ink);
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .hero-cta:hover { background: var(--accent); transform: translateY(-1px); }
+
+    /* SECTIONS */
+    section { padding: 5rem 2.5rem; max-width: 960px; margin: 0 auto; }
+    .section-label {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+    .section-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 400;
+      margin-bottom: 3rem;
+      line-height: 1.2;
+    }
+    hr.divider { border: none; border-top: 1px solid var(--border); margin: 0; }
+
+    /* ABOUT */
+    #about .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 4rem;
+      align-items: start;
+    }
+    .about-meta p { font-size: 0.85rem; color: var(--ink-soft); margin-bottom: 0.5rem; }
+    .about-meta strong { color: var(--ink); }
+    .about-text { font-size: 1rem; line-height: 1.8; color: var(--ink-soft); }
+    .about-text p + p { margin-top: 1rem; }
+    .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.5rem; }
+    .tag {
+      background: var(--accent-light);
+      color: var(--accent);
+      font-size: 0.75rem;
+      padding: 0.3rem 0.75rem;
+      border-radius: 2rem;
+      font-weight: 500;
+    }
+
+    /* PROJECTS */
+    .projects-grid { display: flex; flex-direction: column; }
+
+    .project-card {
+      display: grid;
+      grid-template-columns: 72px 1fr auto;
+      align-items: start;
+      gap: 2rem;
+      padding: 2.5rem 0;
+      border-bottom: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer;
+    }
+    .project-card:first-child { border-top: 1px solid var(--border); }
+
+    .project-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 0.2rem;
+      transition: transform 0.3s cubic-bezier(.34,1.56,.64,1);
+    }
+    .project-card:hover .project-icon { transform: scale(1.1) rotate(-4deg); }
+    .project-icon svg { width: 30px; height: 30px; }
+
+    .icon-empanada { background: #fff5e6; }
+    .icon-residuos  { background: #e8f5e9; }
+    .icon-cafe      { background: #f3ece4; }
+    .icon-clientes  { background: #e8eaf6; }
+
+    .project-type {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.4rem;
+    }
+    .project-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.45rem;
+      font-weight: 400;
+      margin-bottom: 0.7rem;
+      line-height: 1.2;
+    }
+    .project-desc {
+      font-size: 0.95rem;
+      color: var(--ink-soft);
+      line-height: 1.7;
+      max-width: 540px;
+    }
+    .project-stack { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1rem; }
+    .stack-pill {
+      font-size: 0.72rem;
+      padding: 0.2rem 0.6rem;
+      border: 1px solid var(--border);
+      color: var(--ink-soft);
+      border-radius: 2px;
+    }
+    .project-arrow {
+      font-size: 1.2rem;
+      color: var(--border);
+      padding-top: 0.3rem;
+      transition: color 0.2s, transform 0.2s;
+    }
+    .project-card:hover .project-arrow { color: var(--accent); transform: translate(3px,-3px); }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2.5rem;
+      text-align: center;
+      font-size: 0.82rem;
+      color: var(--ink-soft);
+      letter-spacing: 0.04em;
+    }
+    footer a { color: var(--accent); text-decoration: none; }
+
+    /* ANIMATIONS */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 640px) {
+      nav { padding: 1rem 1.5rem; }
+      #hero, section { padding-left: 1.5rem; padding-right: 1.5rem; }
+      #about .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .project-card { grid-template-columns: 56px 1fr; }
+      .project-arrow { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-logo" href="#hero">Tu Nombre</a>
+    <ul class="nav-links">
+      <li><a href="#about">Sobre mí</a></li>
+      <li><a href="#projects">Proyectos</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-inner">
+      <p class="hero-label">Curso de Ciencia de Datos e IA</p>
+      <h1>Datos, modelos<br>e <em>ideas</em> que<br>cobran forma.</h1>
+      <p class="hero-desc">
+        Portfolio de proyectos desarrollados durante el curso, explorando análisis de datos,
+        aprendizaje automático e inteligencia artificial aplicada a problemas reales.
+      </p>
+      <a class="hero-cta" href="#projects">Ver proyectos</a>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ABOUT -->
+  <section id="about">
+    <p class="section-label">Sobre mí</p>
+    <h2 class="section-title fade-up">Quién soy</h2>
+    <div class="about-grid fade-up">
+      <div class="about-meta">
+        <p><strong>Nombre</strong></p>
+        <p>Tu Nombre Aquí</p>
+        <br>
+        <p><strong>Curso</strong></p>
+        <p>Ciencia de Datos e IA</p>
+        <br>
+        <p><strong>Año</strong></p>
+        <p>2024 – 2025</p>
+        <br>
+        <p><strong>GitHub</strong></p>
+        <p><a href="https://github.com/tu-usuario" style="color:var(--accent)">@tu-usuario</a></p>
+      </div>
+      <div class="about-text">
+        <p>
+          Soy estudiante apasionado/a por la ciencia de datos y la inteligencia artificial.
+          A lo largo del curso he explorado cómo extraer valor de los datos, construir modelos
+          predictivos y aplicar técnicas de IA a problemas del mundo real.
+        </p>
+        <p>
+          Me interesa especialmente la intersección entre los datos y la toma de decisiones.
+          Creo que entender los datos es una de las habilidades más valiosas del siglo XXI.
+        </p>
+        <div class="tags">
+          <span class="tag">Python</span>
+          <span class="tag">Pandas</span>
+          <span class="tag">Scikit-learn</span>
+          <span class="tag">TensorFlow</span>
+          <span class="tag">Matplotlib</span>
+          <span class="tag">SQL</span>
+          <span class="tag">Jupyter</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <p class="section-label">Trabajos</p>
+    <h2 class="section-title fade-up">Proyectos del curso</h2>
+
+    <div class="projects-grid">
+
+      <!-- 01 Empanadas -->
+      <a class="project-card fade-up" href="#" target="_blank">
+        <div class="project-icon icon-empanada">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8 29 Q14 12 24 10 Q34 12 40 29 Q34 39 24 39 Q14 39 8 29Z" fill="#f5a623" stroke="#d4861a" stroke-width="1.5"/>
+            <path d="M8 29 Q10 25 12 29 Q14 25 16 29 Q18 25 20 29 Q22 25 24 29 Q26 25 28 29 Q30 25 32 29 Q34 25 36 29 Q38 25 40 29" stroke="#d4861a" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+            <ellipse cx="20" cy="19" rx="4" ry="2.5" fill="white" opacity="0.3" transform="rotate(-15 20 19)"/>
+          </svg>
+        </div>
+        <div class="project-body">
+          <p class="project-type">Análisis y Predicción · Series Temporales</p>
+          <h3 class="project-title">Ventas de empanadas: análisis y forecast</h3>
+          <p class="project-desc">
+            Análisis exploratorio de las ventas históricas de un local gastronómico y construcción
+            de un modelo de predicción de demanda. Se identificaron patrones por día, horario y
+            variedad, y se desarrolló un forecast para optimizar la producción diaria.
+          </p>
+          <div class="project-stack">
+            <span class="stack-pill">Python</span>
+            <span class="stack-pill">Pandas</span>
+            <span class="stack-pill">Prophet</span>
+            <span class="stack-pill">Matplotlib</span>
+            <span class="stack-pill">Seaborn</span>
+          </div>
+        </div>
+        <div class="project-arrow">↗</div>
+      </a>
+
+      <!-- 02 Residuos -->
+      <a class="project-card fade-up" href="#" target="_blank">
+        <div class="project-icon icon-residuos">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- cuerpo -->
+            <rect x="11" y="19" width="26" height="20" rx="3" fill="#4caf50" opacity="0.85"/>
+            <!-- tapa -->
+            <rect x="8" y="14" width="32" height="6" rx="2" fill="#388e3c"/>
+            <!-- asa -->
+            <rect x="19" y="11" width="10" height="4" rx="2" fill="#388e3c"/>
+            <!-- flechas reciclaje -->
+            <path d="M24 24 L21.5 29 H23.2 L22.5 32 H25.5 L24.8 29 H26.5 Z" fill="white" opacity="0.95"/>
+            <!-- ruedas -->
+            <circle cx="16" cy="39" r="2.2" fill="#2e7d32"/>
+            <circle cx="32" cy="39" r="2.2" fill="#2e7d32"/>
+          </svg>
+        </div>
+        <div class="project-body">
+          <p class="project-type">Datos Geoespaciales · Machine Learning</p>
+          <h3 class="project-title">Recolección de residuos en Montevideo</h3>
+          <p class="project-desc">
+            Análisis geoespacial de rutas y frecuencias de recolección de residuos en la ciudad
+            de Montevideo. Se identificaron zonas con déficit de cobertura y se propuso una
+            optimización de recorridos mediante clustering y análisis de datos abiertos de la IMM.
+          </p>
+          <div class="project-stack">
+            <span class="stack-pill">GeoPandas</span>
+            <span class="stack-pill">Folium</span>
+            <span class="stack-pill">Scikit-learn</span>
+            <span class="stack-pill">K-Means</span>
+            <span class="stack-pill">Datos Abiertos IMM</span>
+          </div>
+        </div>
+        <div class="project-arrow">↗</div>
+      </a>
+
+      <!-- 03 Café -->
+      <a class="project-card fade-up" href="#" target="_blank">
+        <div class="project-icon icon-cafe">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- taza -->
+            <path d="M10 21 H33 L30 38 H13 Z" fill="#795548" opacity="0.85"/>
+            <!-- platillo -->
+            <ellipse cx="21.5" cy="39" rx="12" ry="2.2" fill="#5d4037"/>
+            <!-- asa -->
+            <path d="M33 25 Q41 25 41 30.5 Q41 36 33 36" stroke="#5d4037" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <!-- vapor -->
+            <path d="M16 17 Q17.5 13 16 9" stroke="#bcaaa4" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+            <path d="M21.5 16 Q23 12 21.5 8" stroke="#bcaaa4" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+            <path d="M27 17 Q28.5 13 27 9" stroke="#bcaaa4" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+            <!-- crema -->
+            <ellipse cx="21.5" cy="22" rx="9" ry="1.8" fill="#d7a96a" opacity="0.55"/>
+          </svg>
+        </div>
+        <div class="project-body">
+          <p class="project-type">Deep Learning · Computer Vision</p>
+          <h3 class="project-title">Clasificación del nivel de tostado de café con CNN</h3>
+          <p class="project-desc">
+            Red neuronal convolucional entrenada para clasificar imágenes de granos de café
+            según su nivel de tostado (claro, medio, oscuro, muy oscuro). Se empleó transfer
+            learning y data augmentation para maximizar el rendimiento con un dataset acotado.
+          </p>
+          <div class="project-stack">
+            <span class="stack-pill">TensorFlow</span>
+            <span class="stack-pill">Keras</span>
+            <span class="stack-pill">Transfer Learning</span>
+            <span class="stack-pill">OpenCV</span>
+            <span class="stack-pill">NumPy</span>
+          </div>
+        </div>
+        <div class="project-arrow">↗</div>
+      </a>
+
+      <!-- 04 Segmentación -->
+      <a class="project-card fade-up" href="#" target="_blank">
+        <div class="project-icon icon-clientes">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- persona izquierda -->
+            <circle cx="14" cy="17" r="5" fill="#5c6bc0" opacity="0.75"/>
+            <path d="M6 36 Q6 27 14 27 Q22 27 22 36Z" fill="#5c6bc0" opacity="0.75"/>
+            <!-- persona derecha -->
+            <circle cx="34" cy="17" r="5" fill="#7986cb" opacity="0.75"/>
+            <path d="M26 36 Q26 27 34 27 Q42 27 42 36Z" fill="#7986cb" opacity="0.75"/>
+            <!-- persona centro -->
+            <circle cx="24" cy="15" r="4.5" fill="#3949ab"/>
+            <path d="M16.5 35 Q16.5 27 24 27 Q31.5 27 31.5 35Z" fill="#3949ab"/>
+          </svg>
+        </div>
+        <div class="project-body">
+          <p class="project-type">Machine Learning No Supervisado · Clustering</p>
+          <h3 class="project-title">Segmentación de clientes</h3>
+          <p class="project-desc">
+            Segmentación de la base de clientes de un negocio utilizando técnicas de clustering.
+            A partir de variables de comportamiento de compra se identificaron perfiles de cliente
+            diferenciados, generando insights accionables para estrategias de marketing personalizado.
+          </p>
+          <div class="project-stack">
+            <span class="stack-pill">Scikit-learn</span>
+            <span class="stack-pill">K-Means</span>
+            <span class="stack-pill">PCA</span>
+            <span class="stack-pill">Pandas</span>
+            <span class="stack-pill">Plotly</span>
+          </div>
+        </div>
+        <div class="project-arrow">↗</div>
+      </a>
+
+    </div>
+  </section>
+
+  <footer>
+    <p>Tu Nombre · Curso de Ciencia de Datos e IA · <a href="https://github.com/tu-usuario">GitHub</a></p>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
