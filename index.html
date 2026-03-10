@@ -46,6 +46,16 @@
       font-size: 1.1rem;
       color: var(--ink);
       text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .nav-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1.5px solid var(--border);
     }
     .nav-links { display: flex; gap: 2rem; list-style: none; }
     .nav-links a {
@@ -143,14 +153,12 @@
     .about-meta strong { color: var(--ink); }
     .about-text { font-size: 1rem; line-height: 1.8; color: var(--ink-soft); }
     .about-text p + p { margin-top: 1rem; }
-    .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.5rem; }
-    .tag {
-      background: var(--accent-light);
-      color: var(--accent);
-      font-size: 0.75rem;
-      padding: 0.3rem 0.75rem;
-      border-radius: 2rem;
-      font-weight: 500;
+    .skills-list {
+      margin-top: 1.5rem;
+      font-size: 0.85rem;
+      color: var(--ink-soft);
+      letter-spacing: 0.03em;
+      line-height: 2;
     }
 
     /* PROJECTS */
@@ -186,8 +194,11 @@
     .icon-empanada { background: #fff5e6; }
     .icon-residuos  { background: #e8f5e9; }
     .icon-cafe      { background: #f3ece4; }
-    .icon-clientes  { background: #e8eaf6; }
+    .icon-olimpicos { background: #f0f4ff; }
 
+    .project-body {
+      min-width: 0;
+    }
     .project-type {
       font-size: 0.7rem;
       font-weight: 500;
@@ -195,13 +206,24 @@
       text-transform: uppercase;
       color: var(--accent);
       margin-bottom: 0.4rem;
+      word-break: break-word;
+      overflow-wrap: break-word;
     }
     .project-title {
       font-family: 'DM Serif Display', serif;
       font-size: 1.45rem;
       font-weight: 400;
-      margin-bottom: 0.7rem;
+      margin-bottom: 0.2rem;
       line-height: 1.2;
+    }
+    .project-subtitle {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink);
+      opacity: 0.5;
+      margin-bottom: 0.7rem;
     }
     .project-desc {
       font-size: 0.95rem;
@@ -256,7 +278,10 @@
 <body>
 
   <nav>
-    <a class="nav-logo" href="#hero">Tu Nombre</a>
+    <a class="nav-logo" href="#hero">
+      <img src="foto.jpg" alt="Catalina Vaz Martins" class="nav-avatar" />
+      Catalina Vaz Martins
+    </a>
     <ul class="nav-links">
       <li><a href="#about">Sobre mí</a></li>
       <li><a href="#projects">Proyectos</a></li>
@@ -266,7 +291,7 @@
   <!-- HERO -->
   <section id="hero">
     <div class="hero-inner">
-      <p class="hero-label">Curso de Ciencia de Datos e IA</p>
+      <p class="hero-label">Especialización en Ciencia de Datos e IA</p>
       <h1>Datos, modelos<br>e <em>ideas</em> que<br>cobran forma.</h1>
       <p class="hero-desc">
         Portfolio de proyectos desarrollados durante el curso, explorando análisis de datos,
@@ -285,36 +310,29 @@
     <div class="about-grid fade-up">
       <div class="about-meta">
         <p><strong>Nombre</strong></p>
-        <p>Tu Nombre Aquí</p>
+        <p>Catalina Vaz Martins</p>
         <br>
-        <p><strong>Curso</strong></p>
-        <p>Ciencia de Datos e IA</p>
+        <p><strong>Especialización</strong></p>
+        <p>Ciencia de Datos e IA · UTEC – MIT</p>
         <br>
         <p><strong>Año</strong></p>
-        <p>2024 – 2025</p>
+        <p>2025–2026</p>
         <br>
         <p><strong>GitHub</strong></p>
-        <p><a href="https://github.com/tu-usuario" style="color:var(--accent)">@tu-usuario</a></p>
+        <p><a href="https://github.com/catavmt3" style="color:var(--accent)">@catavmt3</a></p>
+        <br>
+        <p><strong>LinkedIn</strong></p>
+        <p><a href="https://www.linkedin.com/in/catalina-vaz-martins/" style="color:var(--accent)">linkedin.com/in/catalina-vaz-martins</a></p>
       </div>
       <div class="about-text">
         <p>
-          Soy estudiante apasionado/a por la ciencia de datos y la inteligencia artificial.
-          A lo largo del curso he explorado cómo extraer valor de los datos, construir modelos
-          predictivos y aplicar técnicas de IA a problemas del mundo real.
+		  Soy profesional de TI con amplia experiencia en sistemas ERP (Oracle E-Business Suite y NetSuite), 
+		  trabajando con clientes de múltiples industrias a lo large del clico de vida de los sistemas de gestión empresarial.
         </p>
         <p>
-          Me interesa especialmente la intersección entre los datos y la toma de decisiones.
-          Creo que entender los datos es una de las habilidades más valiosas del siglo XXI.
-        </p>
-        <div class="tags">
-          <span class="tag">Python</span>
-          <span class="tag">Pandas</span>
-          <span class="tag">Scikit-learn</span>
-          <span class="tag">TensorFlow</span>
-          <span class="tag">Matplotlib</span>
-          <span class="tag">SQL</span>
-          <span class="tag">Jupyter</span>
-        </div>
+		  Actualmente complemento esa experiencia con una especialización en ciencia de datos e inteligencia artificial, 
+		  explorando herramientas y enfoques emergentes que están transformando la forma en que las organizaciones analizan y utilizan la información.        
+		  <p class="skills-list">Python · Pandas · Scikit-learn · TensorFlow · SQL · Oracle ERP · NetSuite · Jupyter</p>
       </div>
     </div>
   </section>
@@ -338,19 +356,24 @@
           </svg>
         </div>
         <div class="project-body">
-          <p class="project-type">Análisis y Predicción · Series Temporales</p>
-          <h3 class="project-title">Ventas de empanadas: análisis y forecast</h3>
+          <p class="project-type">EDA · Series Temporales · Machine Learning</p>
+          <h3 class="project-title">La Campeona Empanadas</h3>
+          <p class="project-subtitle">Análisis de ventas y predicción de demanda</p>
           <p class="project-desc">
-            Análisis exploratorio de las ventas históricas de un local gastronómico y construcción
-            de un modelo de predicción de demanda. Se identificaron patrones por día, horario y
-            variedad, y se desarrolló un forecast para optimizar la producción diaria.
+            Análisis integral de 107.000 pedidos de dos sucursales en Montevideo (enero 2024 – febrero 2026),
+            a partir de datos reales exportados desde el sistema POS. Incluye limpieza y feature engineering,
+            EDA temporal y por canal, mapa de delivery georreferenciado con 27.500 pedidos geocodificados,
+            segmentación de clientes frecuentes con KMeans + PCA, y modelo predictivo de demanda por
+            sabor y sucursal con Random Forest (MAE: 9 unidades, R²: 0.62).
           </p>
           <div class="project-stack">
             <span class="stack-pill">Python</span>
             <span class="stack-pill">Pandas</span>
-            <span class="stack-pill">Prophet</span>
-            <span class="stack-pill">Matplotlib</span>
-            <span class="stack-pill">Seaborn</span>
+            <span class="stack-pill">LightGBM</span>
+            <span class="stack-pill">Random Forest</span>
+            <span class="stack-pill">Folium</span>
+            <span class="stack-pill">KMeans</span>
+            <span class="stack-pill">PCA</span>
           </div>
         </div>
         <div class="project-arrow">↗</div>
@@ -360,104 +383,103 @@
       <a class="project-card fade-up" href="#" target="_blank">
         <div class="project-icon icon-residuos">
           <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <!-- cuerpo -->
             <rect x="11" y="19" width="26" height="20" rx="3" fill="#4caf50" opacity="0.85"/>
-            <!-- tapa -->
             <rect x="8" y="14" width="32" height="6" rx="2" fill="#388e3c"/>
-            <!-- asa -->
             <rect x="19" y="11" width="10" height="4" rx="2" fill="#388e3c"/>
-            <!-- flechas reciclaje -->
             <path d="M24 24 L21.5 29 H23.2 L22.5 32 H25.5 L24.8 29 H26.5 Z" fill="white" opacity="0.95"/>
-            <!-- ruedas -->
             <circle cx="16" cy="39" r="2.2" fill="#2e7d32"/>
             <circle cx="32" cy="39" r="2.2" fill="#2e7d32"/>
           </svg>
         </div>
         <div class="project-body">
-          <p class="project-type">Datos Geoespaciales · Machine Learning</p>
+          <p class="project-type">Deep Learning · Anomalías · Series Temporales</p>
           <h3 class="project-title">Recolección de residuos en Montevideo</h3>
+          <p class="project-subtitle">Predicción y detección de anomalías</p>
           <p class="project-desc">
-            Análisis geoespacial de rutas y frecuencias de recolección de residuos en la ciudad
-            de Montevideo. Se identificaron zonas con déficit de cobertura y se propuso una
-            optimización de recorridos mediante clustering y análisis de datos abiertos de la IMM.
+            Pipeline de modelado sobre ~8,9 millones de registros de levantes de contenedores
+            de la Intendencia de Montevideo (enero 2024 – febrero 2026). Se construyeron secuencias
+            temporales por contenedor y se compararon tres arquitecturas: regresión lineal (baseline),
+            GRU y LSTM con embedding de contenedor. El LSTM logró el mejor R² (0.34) y RMSE (1.37 días).
+            El sistema de detección de anomalías basado en ruptura de patrón individual (k=2.5σ)
+            alcanzó un recall del 71% — triplicando el del enfoque de umbral fijo.
           </p>
           <div class="project-stack">
+            <span class="stack-pill">PyTorch</span>
+            <span class="stack-pill">LSTM</span>
+            <span class="stack-pill">GRU</span>
             <span class="stack-pill">GeoPandas</span>
-            <span class="stack-pill">Folium</span>
             <span class="stack-pill">Scikit-learn</span>
-            <span class="stack-pill">K-Means</span>
             <span class="stack-pill">Datos Abiertos IMM</span>
           </div>
         </div>
         <div class="project-arrow">↗</div>
       </a>
 
-      <!-- 03 Café -->
+      <!-- 03 RoastAI -->
       <a class="project-card fade-up" href="#" target="_blank">
         <div class="project-icon icon-cafe">
           <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <!-- taza -->
             <path d="M10 21 H33 L30 38 H13 Z" fill="#795548" opacity="0.85"/>
-            <!-- platillo -->
             <ellipse cx="21.5" cy="39" rx="12" ry="2.2" fill="#5d4037"/>
-            <!-- asa -->
             <path d="M33 25 Q41 25 41 30.5 Q41 36 33 36" stroke="#5d4037" stroke-width="3" fill="none" stroke-linecap="round"/>
-            <!-- vapor -->
             <path d="M16 17 Q17.5 13 16 9" stroke="#bcaaa4" stroke-width="1.5" fill="none" stroke-linecap="round"/>
             <path d="M21.5 16 Q23 12 21.5 8" stroke="#bcaaa4" stroke-width="1.5" fill="none" stroke-linecap="round"/>
             <path d="M27 17 Q28.5 13 27 9" stroke="#bcaaa4" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-            <!-- crema -->
             <ellipse cx="21.5" cy="22" rx="9" ry="1.8" fill="#d7a96a" opacity="0.55"/>
           </svg>
         </div>
         <div class="project-body">
-          <p class="project-type">Deep Learning · Computer Vision</p>
-          <h3 class="project-title">Clasificación del nivel de tostado de café con CNN</h3>
+          <p class="project-type">Deep Learning · Computer Vision · EDA</p>
+          <h3 class="project-title">RoastAI</h3>
+          <p class="project-subtitle">Clasificación de granos de café y análisis de producción global</p>
           <p class="project-desc">
-            Red neuronal convolucional entrenada para clasificar imágenes de granos de café
-            según su nivel de tostado (claro, medio, oscuro, muy oscuro). Se empleó transfer
-            learning y data augmentation para maximizar el rendimiento con un dataset acotado.
+            Proyecto en dos partes: EDA de producción mundial de café (datos USDA, 1960–2023, 94 países)
+            con análisis de cadena de valor por región, y modelo de computer vision para clasificar
+            granos por nivel de tostado (verde, claro, medio, oscuro). Arquitectura ResNet18 con
+            transfer learning entrenada en PyTorch, con análisis de interpretabilidad mediante Grad-CAM.
+            Precisión superior al 85%.
           </p>
           <div class="project-stack">
-            <span class="stack-pill">TensorFlow</span>
-            <span class="stack-pill">Keras</span>
+            <span class="stack-pill">PyTorch</span>
+            <span class="stack-pill">ResNet18</span>
             <span class="stack-pill">Transfer Learning</span>
-            <span class="stack-pill">OpenCV</span>
-            <span class="stack-pill">NumPy</span>
+            <span class="stack-pill">Grad-CAM</span>
+            <span class="stack-pill">Pandas</span>
+            <span class="stack-pill">Plotly</span>
           </div>
         </div>
         <div class="project-arrow">↗</div>
       </a>
 
-      <!-- 04 Segmentación -->
+      <!-- 04 Juegos Olímpicos -->
       <a class="project-card fade-up" href="#" target="_blank">
-        <div class="project-icon icon-clientes">
+        <div class="project-icon icon-olimpicos">
           <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <!-- persona izquierda -->
-            <circle cx="14" cy="17" r="5" fill="#5c6bc0" opacity="0.75"/>
-            <path d="M6 36 Q6 27 14 27 Q22 27 22 36Z" fill="#5c6bc0" opacity="0.75"/>
-            <!-- persona derecha -->
-            <circle cx="34" cy="17" r="5" fill="#7986cb" opacity="0.75"/>
-            <path d="M26 36 Q26 27 34 27 Q42 27 42 36Z" fill="#7986cb" opacity="0.75"/>
-            <!-- persona centro -->
-            <circle cx="24" cy="15" r="4.5" fill="#3949ab"/>
-            <path d="M16.5 35 Q16.5 27 24 27 Q31.5 27 31.5 35Z" fill="#3949ab"/>
+            <circle cx="14" cy="20" r="7" stroke="#0085C7" stroke-width="2.5" fill="none"/>
+            <circle cx="24" cy="20" r="7" stroke="#F4C300" stroke-width="2.5" fill="none"/>
+            <circle cx="34" cy="20" r="7" stroke="#009F3D" stroke-width="2.5" fill="none"/>
+            <circle cx="19" cy="28" r="7" stroke="#DF0024" stroke-width="2.5" fill="none"/>
+            <circle cx="29" cy="28" r="7" stroke="#000000" stroke-width="2.5" fill="none"/>
           </svg>
         </div>
         <div class="project-body">
-          <p class="project-type">Machine Learning No Supervisado · Clustering</p>
-          <h3 class="project-title">Segmentación de clientes</h3>
+          <p class="project-type">EDA · Calidad de Datos · Estadística</p>
+          <h3 class="project-title">120 años de Juegos Olímpicos</h3>
+          <p class="project-subtitle">Análisis histórico 1896–2016</p>
           <p class="project-desc">
-            Segmentación de la base de clientes de un negocio utilizando técnicas de clustering.
-            A partir de variables de comportamiento de compra se identificaron perfiles de cliente
-            diferenciados, generando insights accionables para estrategias de marketing personalizado.
+            Análisis exploratorio sobre 271.000 registros históricos de los Juegos Olímpicos
+            (Atenas 1896 – Río 2016). Se evaluó la calidad del dataset (completitud, validez,
+            unicidad, consistencia) y se respondieron preguntas clave sobre participación por país,
+            evolución de la presencia femenina, disciplinas históricas, medallero y características
+            físicas de atletas. Se validaron datos atípicos contra fuentes oficiales.
+            Desarrollado en equipo junto a Florencia Barrios y Diego Della Nave.
           </p>
           <div class="project-stack">
-            <span class="stack-pill">Scikit-learn</span>
-            <span class="stack-pill">K-Means</span>
-            <span class="stack-pill">PCA</span>
+            <span class="stack-pill">Python</span>
             <span class="stack-pill">Pandas</span>
-            <span class="stack-pill">Plotly</span>
+            <span class="stack-pill">Matplotlib</span>
+            <span class="stack-pill">Seaborn</span>
+            <span class="stack-pill">NumPy</span>
           </div>
         </div>
         <div class="project-arrow">↗</div>
@@ -467,7 +489,7 @@
   </section>
 
   <footer>
-    <p>Tu Nombre · Curso de Ciencia de Datos e IA · <a href="https://github.com/tu-usuario">GitHub</a></p>
+    <p>Catalina Vaz Martins · Especialización en Ciencia de Datos e IA · <a href="https://github.com/catavmt3">GitHub</a></p>
   </footer>
 
   <script>
