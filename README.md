@@ -1,6 +1,6 @@
 # Portfolio · Ciencia de Datos e Inteligencia Artificial
 
-Portfolio web desarrollado como entrega del curso de Ciencia de Datos e IA.
+Portfolio web desarrollado como entrega de la especialización en Ciencia de Datos e IA que realicé en UTEC-MIT.
 Presenta tres proyectos realizados a lo largo del curso.
 
 ## 🚀 Ver el portfolio
